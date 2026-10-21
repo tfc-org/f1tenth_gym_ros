@@ -813,8 +813,6 @@ class GymBridge(Node):
         odom.pose.pose.orientation.y = quat[1]
         odom.pose.pose.orientation.z = quat[2]
         odom.pose.pose.orientation.w = quat[3]
-        # speed is the CoG velocity in the body frame; the twist is base_link's
-        # (child_frame_id). Same forward speed and yaw rate; lateral differs by w*lr.
         odom.twist.twist.linear.x = speed[0]
         odom.twist.twist.linear.y = speed[1] - speed[2] * float(self.vehicle_params.lr)
         odom.twist.twist.angular.z = speed[2]
